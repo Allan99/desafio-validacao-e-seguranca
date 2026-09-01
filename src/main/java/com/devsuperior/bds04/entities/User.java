@@ -95,6 +95,10 @@ public class User implements UserDetails{
 	public String getUsername() {
 		return email;
 	}
+
+	public void addRole(Role role) {
+		roles.add(role);
+	}
 	
 	
 }
