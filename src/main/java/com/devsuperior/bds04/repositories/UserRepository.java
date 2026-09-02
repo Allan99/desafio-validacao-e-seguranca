@@ -11,6 +11,7 @@ import com.devsuperior.bds04.projections.UserDetailsProjection;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+		
 	@Query(nativeQuery = true, value = """
 			SELECT tb_user.email AS username, tb_user.password, tb_role.id AS roleId, tb_role.authority
 			FROM tb_user

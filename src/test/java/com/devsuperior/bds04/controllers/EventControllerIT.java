@@ -2,6 +2,7 @@ package com.devsuperior.bds04.controllers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,9 +48,9 @@ public class EventControllerIT {
 	@BeforeEach
 	void setUp() throws Exception {
 		
-		clientUsername = "ana@gmail.com";
+		clientUsername = "alex@gmail.com";
 		clientPassword = "123456";
-		adminUsername = "bob@gmail.com";
+		adminUsername = "maria@gmail.com";
 		adminPassword = "123456";
 		
 		clientToken = tokenUtil.obtainAccessToken(mockMvc, clientUsername, clientPassword);
@@ -111,6 +112,7 @@ public class EventControllerIT {
 					.contentType(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON));
 		
+		result.andDo(print()).andExpect(status().isCreated());;
 		result.andExpect(status().isCreated());
 		result.andExpect(jsonPath("$.id").exists());
 		result.andExpect(jsonPath("$.name").value("Expo XP"));

@@ -74,6 +74,10 @@ public class User implements UserDetails{
 		return Objects.hash(id);
 	}
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
